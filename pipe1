@@ -1,0 +1,18 @@
+pipeline {
+agent any
+
+stages {
+stage('Checkout') {
+steps {
+// Checkout your Git repository
+checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url:
+'https://github.com/amitopenwriteup/repojenkins.git']])
+}
+}
+
+stage('Install npm') {
+steps {
+// Install Newman globally
+sh 'sudo apt-get install -y npm'
+}
+}
